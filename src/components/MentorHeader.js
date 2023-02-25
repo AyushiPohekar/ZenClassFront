@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const MentorHeader = () => {
     const { logindata, setLoginData } = useContext(MentorLoginContext);
-  console.log(logindata)
+ // console.log(logindata)
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);

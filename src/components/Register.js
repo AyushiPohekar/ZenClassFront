@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./mix.css";
@@ -9,6 +9,8 @@ import Header from "./Header";
 const Register = () => {
   const [passShow, setPassShow] = useState(false);
   const [cpassShow, setCPassShow] = useState(false);
+   
+  const navigate=useNavigate();
 
   const [inpval, setInpval] = useState({
     fname: "",
@@ -68,7 +70,7 @@ const Register = () => {
         position: "top-center",
       });
     } else {
-      // console.log("user registration succesfully done");
+
 
       const data = await fetch(`${API}/register`, {
         method: "POST",
@@ -85,7 +87,13 @@ const Register = () => {
       });
 
       const res = await data.json();
-      console.log(res.status);
+      //console.log(res.status);
+      if(res.status === 422){
+        toast.error(" this email already exists!", {
+            position: "top-center"
+        })
+     }
+
 
       if (res.status === 201) {
         toast.success("Registration Successfully done 😃!", {

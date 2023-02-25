@@ -13,7 +13,7 @@ import { QueryListContext } from "../components/ContextProvider/QueryContext";
 const CreateQuery = () => {
 
   const { logindata, setLoginData } = useContext(LoginContext);
-  console.log(logindata);
+  //console.log(logindata);
   const [data, setData] = useState(false);
 
   const QuerydetailsValid = async () => {
